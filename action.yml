@@ -1,0 +1,31 @@
+name: 'Helm release'
+description: 'Build and release Helm packages on s3 repositories.'
+branding:
+  icon: 'arrow-up-circle'
+  color: 'blue'
+inputs:
+  version:
+    description: Override Helm chart version.
+    required: false
+  chart:
+    description: The local Helm cart folder path.
+    default: './'
+    required: true
+  repo:
+    description: The S3 Helm repository bucket URL.
+    required: true
+  forceRelease:
+    description: Force and replace existing release if a release with the same version already exist.
+    default: 'true'
+    required: true
+  packageExtraArgs:
+    description: Helm package command extra arguments.
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version }}
+    - ${{ inputs.chart }}
+    - ${{ inputs.repo }}
+    - ${{ inputs.forceRelease }}

@@ -1,0 +1,26 @@
+{
+  "name": "helm-release-action",
+  "version": "1.0.0",
+  "description": "Build and release Helm packages on s3 repositories using Github Actions.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shellbear/helm-release-action.git"
+  },
+  "author": "shellbear",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shellbear/helm-release-action/issues"
+  },
+  "homepage": "https://github.com/shellbear/helm-release-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4"
+  }
+}
