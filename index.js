@@ -34,7 +34,7 @@ function package() {
   
   const version = core.getInput('version');
   if (version) {
-    args.push('--version', version);
+    args.push('--set deployment.version=' + version);
   }
 
   return args;
