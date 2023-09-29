@@ -30,12 +30,14 @@ function package() {
     '--destination',
     RELEASE_DIR,
     ...core.getInput('packageExtraArgs').split(/\s+/),
+    '--version',
+    version,
   ];
   
-  const version = core.getInput('version');
-  if (version) {
-    args.push('--version=' + version);
-  }
+  // const version = core.getInput('version');
+  // if (version) {
+  //   args.push('--version=' + version);
+  // }
 
   return args;
 }
