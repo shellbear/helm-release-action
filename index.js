@@ -34,7 +34,7 @@ function package() {
   
   const version = core.getInput('version');
   if (version) {
-    args.push('--set version=' + version);
+    args.push('--version=' + version);
   }
 
   return args;
