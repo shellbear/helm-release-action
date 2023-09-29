@@ -29,15 +29,13 @@ function package() {
     '--dependency-update',
     '--destination',
     RELEASE_DIR,
-    ...core.getInput('packageExtraArgs').split(/\s+/),
-    '--version',
-    core.getInput('version'),
+    // ...core.getInput('packageExtraArgs').split(/\s+/),
   ];
   
-  // const version = core.getInput('version');
-  // if (version) {
-  //   args.push('--version=' + version);
-  // }
+  const version = core.getInput('version');
+  if (version) {
+    args.push('--version=' + version);
+  }
 
   return args;
 }
