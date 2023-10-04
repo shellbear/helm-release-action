@@ -29,12 +29,12 @@ function package() {
     '--dependency-update',
     '--destination',
     RELEASE_DIR,
-    ...core.getInput('packageExtraArgs').split(/\s+/),
+    // ...core.getInput('packageExtraArgs').split(/\s+/),
   ];
   
   const version = core.getInput('version');
   if (version) {
-    args.push('--version', version);
+    args.push('--version=' + version);
   }
 
   return args;
