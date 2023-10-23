@@ -4,6 +4,9 @@ branding:
   icon: 'arrow-up-circle'
   color: 'blue'
 inputs:
+  appVersion:
+    description: Override Helm chart appVersion.
+    required: false
   version:
     description: Override Helm chart version.
     required: false
@@ -25,6 +28,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.appVersion }}
     - ${{ inputs.version }}
     - ${{ inputs.chart }}
     - ${{ inputs.repo }}
