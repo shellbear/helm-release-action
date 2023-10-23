@@ -31,7 +31,12 @@ function package() {
     RELEASE_DIR,
     // ...core.getInput('packageExtraArgs').split(/\s+/),
   ];
-  
+
+  const appVersion = core.getInput('app-version');
+  if (appVersion) {
+    args.push('--app-version' + appVersion);
+  }
+
   const version = core.getInput('version');
   if (version) {
     args.push('--version=' + version);
