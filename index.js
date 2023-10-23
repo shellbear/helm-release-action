@@ -34,7 +34,7 @@ function package() {
 
   const appVersion = core.getInput('app-version');
   if (appVersion) {
-    args.push('--app-version' + appVersion);
+    args.push('--app-version=' + appVersion);
   }
 
   const version = core.getInput('version');
