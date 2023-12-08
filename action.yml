@@ -21,6 +21,10 @@ inputs:
   packageExtraArgs:
     description: Helm package command extra arguments.
     required: false
+  relativeUrls:
+    description: Create the index with relative URLs. Useful for http(s) serving of helm repos
+    default: 'false'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -29,3 +33,4 @@ runs:
     - ${{ inputs.chart }}
     - ${{ inputs.repo }}
     - ${{ inputs.forceRelease }}
+    - ${{ inputs.relativeUrls }}
