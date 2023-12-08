@@ -45,6 +45,7 @@ jobs:
 - `chart`: Helm chart path. (default: `./`)
 - `forceRelease`: If set to `false` and the chart already exists, exit normally and do not trigger an error. (default: `true`).
 - `packageExtraArgs`: Helm [package](https://helm.sh/docs/helm/helm_package/) command extra arguments.
+- `relativeUrls`: Helm-s3 push option for creating URLs that are relative to the Index location. By default, URLs are the full path using `s3://` protocol. If you intend to serve your Helm repository via http(s), you should enable this option. (default: `false`)
 
 ## Build with
 
