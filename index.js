@@ -57,6 +57,11 @@ function push() {
     args.push('--ignore-if-exists');
   }
 
+  const relativeUrls = core.getInput('relativeUrls', { required: true }) == 'true';
+  if (relativeUrls) {
+    args.push('--relative');
+  }
+
   return args;
 }
 
