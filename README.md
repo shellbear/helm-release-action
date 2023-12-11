@@ -4,6 +4,11 @@ Build and release Helm packages on s3 repositories using Github Actions.
 
 Instructions on how to set up a S3 bucket as a helm chart repository: https://andrewlock.net/how-to-create-a-helm-chart-repository-using-amazon-s3/.
 
+## Changelog
+
+- 0.2: Add an option for Relative URLs [Thanks to this PR](https://github.com/shellbear/helm-release-action/pull/4) [@aztechian](https://github.com/aztechian)
+- 0.1: Initial release
+
 ## Examples
 
 Using [aws-actions/configure-aws-credentials@v1](https://github.com/aws-actions/configure-aws-credentials) action to configure S3 access:
@@ -25,7 +30,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
       - name: Helm release
-        uses: shellbear/helm-release-action@0.1
+        uses: shellbear/helm-release-action@v0.2
         with:
           repo: s3://s3-bucket-example/
           chart: ./deployment/helm
