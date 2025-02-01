@@ -1,5 +1,5 @@
 name: 'Helm release'
-description: 'Build and release Helm packages on s3 repositories.'
+description: 'Build and release Helm packages on S3 repositories.'
 branding:
   icon: 'arrow-up-circle'
   color: 'blue'
@@ -8,23 +8,26 @@ inputs:
     description: Override Helm chart version.
     required: false
   chart:
-    description: The local Helm cart folder path.
+    description: The local Helm chart folder path.
     default: './'
     required: true
   repo:
     description: The S3 Helm repository bucket URL.
     required: true
   forceRelease:
-    description: Force and replace existing release if a release with the same version already exist.
+    description: Force and replace existing release if a release with the same version already exists.
     default: 'true'
     required: true
   packageExtraArgs:
     description: Helm package command extra arguments.
     required: false
   relativeUrls:
-    description: Create the index with relative URLs. Useful for http(s) serving of helm repos
+    description: Create the index with relative URLs. Useful for HTTP(S) serving of Helm repos.
     default: 'false'
     required: true
+  helmS3Version:
+    description: 'The version of the Helm S3 plugin to install. Defaults to the latest release from GitHub.'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -34,3 +37,4 @@ runs:
     - ${{ inputs.repo }}
     - ${{ inputs.forceRelease }}
     - ${{ inputs.relativeUrls }}
+    - ${{ inputs.helmS3Version }}  # Ensure it's passed to the script
