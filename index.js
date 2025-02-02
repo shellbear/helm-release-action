@@ -25,7 +25,7 @@ function package() {
     RELEASE_DIR,
     ...core.getInput('packageExtraArgs').split(/\s+/),
   ];
-  
+
   const version = core.getInput('version');
   if (version) {
     args.push('--version', version);
@@ -62,14 +62,11 @@ async function installPlugins() {
       helmS3Version = await getLatestHelmS3Version(); // Fetch latest if not provided
     }
 
-    const plugins = [
-      `https://github.com/hypnoglow/helm-s3.git@${helmS3Version}`,
-      'https://github.com/thynquest/helm-pack.git',
-    ];
+    // Install helm-s3 with --version flag
+    await exec.exec(HELM, ['plugin', 'install', 'https://github.com/hypnoglow/helm-s3.git', '--version', helmS3Version]);
 
-    for (const plugin of plugins) {
-      await exec.exec(HELM, ['plugin', 'install', plugin]);
-    }
+    // Install helm-pack
+    await exec.exec(HELM, ['plugin', 'install', 'https://github.com/thynquest/helm-pack.git']);
   } catch (err) {
     core.error(`Failed to install plugins: ${err.message}`);
     throw err;
