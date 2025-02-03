@@ -5,7 +5,7 @@ Build and release Helm packages on s3 repositories using Github Actions.
 Instructions on how to set up a S3 bucket as a helm chart repository: https://andrewlock.net/how-to-create-a-helm-chart-repository-using-amazon-s3/.
 
 ## Changelog
-
+- 0.3: Added an option to specify the `helm-s3` plugin version. Defaults to the latest GitHub release but allows users to override it.  
 - 0.2: Add an option for Relative URLs [Thanks to this PR](https://github.com/shellbear/helm-release-action/pull/4) [@aztechian](https://github.com/aztechian)
 - 0.1: Initial release
 
@@ -34,6 +34,7 @@ jobs:
         with:
           repo: s3://s3-bucket-example/
           chart: ./deployment/helm
+          helmS3Version: "0.16.2"  # Optional, specify Helm S3 plugin version
 ```
 
 ## Parameters
@@ -51,7 +52,7 @@ jobs:
 - `forceRelease`: If set to `false` and the chart already exists, exit normally and do not trigger an error. (default: `true`).
 - `packageExtraArgs`: Helm [package](https://helm.sh/docs/helm/helm_package/) command extra arguments.
 - `relativeUrls`: Helm-s3 push option for creating URLs that are relative to the Index location. By default, URLs are the full path using `s3://` protocol. If you intend to serve your Helm repository via http(s), you should enable this option. (default: `false`)
-
+`helmS3Version`: **(New in v0.3)** Specify the `helm-s3` plugin version to install. Defaults to the latest GitHub release.
 ## Build with
 
 - [helm-s3](https://github.com/hypnoglow/helm-s3.git)
